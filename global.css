@@ -1,0 +1,122 @@
+
+
+body {
+    font: 100%/1.5 system-ui, sans-serif;
+    display: flex;
+    flex-flow: column;
+    max-width: 80em;
+    min-height: 100vh;
+    box-sizing: border-box;
+    margin: auto;
+    padding: 1em;
+  }
+
+html, body {
+    margin: 0;
+    padding: 5;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+  
+#map {
+    width: 100%; /* Adjust width to your desired size */
+    height: 600px; /* Adjust height to your desired size */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow for effect */
+    border-radius: 8px; /* Optional: rounded corners */
+    margin-top: 2em;
+}
+
+#map svg {
+    position: absolute;
+    z-index: 1; /* z-index doesn't work without positioning */
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+
+  }
+
+circle, .legend {
+    pointer-events: auto;
+    --color-departures: steelblue;
+    --color-arrivals: darkorange;
+    --color: color-mix( in oklch, var(--color-departures) calc(100% * var(--departure-ratio)), var(--color-arrivals));
+    fill: var(--color);
+}
+
+header {
+    display: flex;
+    gap: 1em;
+    align-items: baseline;
+    margin-bottom: 1.5em;
+}
+  
+label {
+    margin-left: auto;
+}
+  
+#selected-time, em {
+    display: block;
+    margin-top: 0.25em;
+}
+  
+em {
+    color: #b2b2b2;
+    font-style: italic;
+}
+
+input[type="range"] {
+    width: 20vw; 
+}
+  
+h1 {
+    margin: 1em 1em;
+}
+
+.legend > div {
+    padding: 0.5em 1.5em;
+    font-weight: bold;
+}
+
+.legend.legend-swatches {
+    display: flex;
+    align-items: center;
+    gap: 2em; /* Large gap between groups */
+    font-size: 0.9rem;
+    margin-block: 1em;
+  }
+  
+.legend-swatches > div {
+    display: flex;
+    align-items: center;
+    gap: 0.4em; 
+}
+  
+.legend-label {
+    font-weight: bold;
+    color: #666;
+    margin-right: 0.5em;
+    letter-spacing: 0.5px;
+}
+  
+.swatch {
+    display: inline-block;
+    width: 0.9em;
+    height: 0.9em;
+    border-radius: 50%;
+    content: "";
+}
+  
+  /* Swatch colors */
+.swatch.departure {
+    background-color: steelblue;
+}
+.swatch.balanced {
+    background-color: orchid; /* same as color-mix midpoint if used */
+}
+.swatch.arrival {
+    background-color: darkorange;
+}
+  
